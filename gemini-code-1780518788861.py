@@ -3,7 +3,7 @@ from google import genai
 from google.genai import types
 
 # -------------------------------------------------------------
-# 1. Signature Visual Persona & Spatial CSS
+# 1. Authentic Minimalist Identity (Editorial / Matcha Vibe)
 # -------------------------------------------------------------
 st.set_page_config(
     page_title="Upfound Content Studio", 
@@ -13,106 +13,119 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;500;600&display=swap');
+    /* Import clean typography */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
     
-    /* Studio Background & Canvas Definition */
+    /* Hide Streamlit Default Branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Global Warm Minimalist Background */
     .stApp {
-        background-color: #0A0C10;
-        color: #E2E8F0;
-        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #F9F8F6;
+        color: #2D2D2D;
+        font-family: 'Inter', sans-serif;
     }
     
-    /* Header Branding Elements */
+    /* Editorial Header */
     .studio-header {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 2.2rem;
-        font-weight: 500;
-        letter-spacing: -1px;
-        color: #FFFFFF;
-        margin-top: 1rem;
-        margin-bottom: 0.1rem;
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        font-weight: 600;
+        color: #1A1A1A;
+        margin-top: 2rem;
+        margin-bottom: 0.2rem;
+        letter-spacing: -0.5px;
     }
     .studio-tagline {
-        font-size: 0.8rem;
-        color: #475569;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        color: #666666;
         text-transform: uppercase;
         letter-spacing: 3px;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
     }
     
-    /* Form Element Subversion */
+    /* Clean Input Styling */
     div.stSelectbox > label, div.stTextArea > label {
-        font-family: 'Space Grotesk', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 0.75rem !important;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #64748B !important;
-        margin-bottom: 0.6rem;
+        letter-spacing: 1.5px;
+        color: #555555 !important;
+        margin-bottom: 0.5rem;
     }
     
+    /* White inputs with subtle borders */
     div.stSelectbox div[data-baseweb="select"] {
-        background-color: #11141D !important;
-        border: 1px solid #1E293B !important;
-        border-radius: 4px !important;
-        padding: 0.2rem 0;
+        background-color: #FFFFFF !important;
+        border: 1px solid #E2E2E2 !important;
+        border-radius: 2px !important;
     }
     
     textarea {
-        background-color: #11141D !important;
-        border: 1px solid #1E293B !important;
-        border-radius: 4px !important;
-        color: #E2E8F0 !important;
+        background-color: #FFFFFF !important;
+        border: 1px solid #E2E2E2 !important;
+        border-radius: 2px !important;
+        color: #2D2D2D !important;
+        padding: 1rem !important;
+    }
+    textarea:focus {
+        border-color: #8A9A86 !important;
+        box-shadow: none !important;
     }
 
-    /* Action Button - Organic Sage/Matcha Spectrum */
+    /* Signature Action Button - Matcha Green */
     .stButton>button {
-        background: linear-gradient(135deg, #748A71 0%, #5C6E59 100%);
-        color: #0A0C10;
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 600;
+        background-color: #8A9A86;
+        color: #FFFFFF;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
         font-size: 0.9rem;
-        letter-spacing: 2px;
-        border-radius: 4px;
+        letter-spacing: 1.5px;
+        border-radius: 2px;
         border: none;
         padding: 0.8rem 0;
-        margin-top: 1.8rem;
+        margin-top: 1.5rem;
         text-transform: uppercase;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 4px 20px rgba(116, 138, 113, 0.1);
+        transition: background-color 0.3s ease;
     }
     .stButton>button:hover {
-        background: linear-gradient(135deg, #859D82 0%, #748A71 100%);
-        box-shadow: 0 6px 24px rgba(116, 138, 113, 0.25);
-        transform: translateY(-1px);
-        color: #0A0C10;
+        background-color: #72826F;
+        color: #FFFFFF;
     }
 
-    /* Premium Content Block Framework */
+    /* Content Output Canvas */
     .output-frame {
-        background-color: #11141D;
-        border: 1px solid #1E293B;
-        border-top: 2px solid #748A71;
-        padding: 2.5rem;
-        border-radius: 8px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        background-color: #FFFFFF;
+        border: 1px solid #EAEAEA;
+        border-left: 4px solid #8A9A86;
+        padding: 3rem;
+        border-radius: 2px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        margin-top: 1.5rem;
     }
     
-    /* Custom Scrollbar for Studio Aesthetics */
-    ::-webkit-scrollbar {
-        width: 6px;
+    /* Markdown Text Formatting inside Output */
+    .output-frame h3 {
+        font-family: 'Playfair Display', serif;
+        color: #1A1A1A;
+        margin-top: 0;
     }
-    ::-webkit-scrollbar-track {
-        background: #0A0C10;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #1E293B;
-        border-radius: 3px;
+    .output-frame h4 {
+        font-family: 'Inter', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        color: #8A9A86;
+        margin-top: 2rem;
     }
     
     .studio-footer {
         margin-top: 6rem;
         font-size: 0.7rem;
-        color: #334155;
+        color: #999999;
         text-align: center;
         letter-spacing: 2px;
         text-transform: uppercase;
@@ -121,7 +134,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# 2. Re-Engineered Prompt Protocol
+# 2. System Prompt Logic
 # -------------------------------------------------------------
 SYSTEM_PROMPT = """
 You are the elite Content Architect for Upfound. Your aesthetic is completely minimalist, but your message embraces the raw, unfiltered chaos of startup culture. 
@@ -146,24 +159,24 @@ Output Format Requirement:
 """
 
 # -------------------------------------------------------------
-# 3. Workspace Presentation
+# 3. UI Layout & Execution
 # -------------------------------------------------------------
-st.markdown('<div class="studio-header">UPFOUND // RAW STUDIO</div>', unsafe_allow_html=True)
-st.markdown('<div class="studio-tagline">Content Architecture Ecosystem</div>', unsafe_allow_html=True)
+st.markdown('<div class="studio-header">Upfound Studio</div>', unsafe_allow_html=True)
+st.markdown('<div class="studio-tagline">Content Architecture // Minimalist Chaos</div>', unsafe_allow_html=True)
 
-# Asymmetric workspace configuration
-col_controls, col_canvas = st.columns([5, 7], gap="large")
+# Clean, asymmetric layout
+col_controls, col_canvas = st.columns([4, 6], gap="large")
 
 with col_controls:
     st.selectbox(
         "Audience Trajectory",
-        ["Talent Focus (60% Weighting) — Core Competence, Bypassing Legacy Filters", 
-         "Founder Focus (40% Weighting) — Direct Sourcing, Cutting Corporate Noise"],
+        ["Talent Focus (60% Weight) — Core Skills, Bypassing Legacy Filters", 
+         "Founder Focus (40% Weight) — Direct Sourcing, Cutting Corporate Noise"],
         key="audience"
     )
     
     st.selectbox(
-        "Production Frame & Intensity",
+        "Production Frame",
         ["Low Energy — Handheld Content Studio (Single-Take 15s Raw Reel)",
          "Medium Energy — Core Asset Highlight Translation",
          "High Energy — Comprehensive Conceptual Slide Carousel"],
@@ -171,9 +184,9 @@ with col_controls:
     )
     
     st.text_area(
-        "Raw Cognitive Spark (Context Fragment)",
-        placeholder="Drop any incomplete thoughts here, or leave completely blank for a wildcard prompt...",
-        height=160,
+        "Raw Cognitive Spark",
+        placeholder="Drop any incomplete thoughts here...",
+        height=140,
         key="spark"
     )
     
@@ -181,7 +194,7 @@ with col_controls:
 
 with col_canvas:
     if generate_btn:
-        with st.spinner("Compiling narrative layers..."):
+        with st.spinner("Curating narrative..."):
             try:
                 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
                 
@@ -201,18 +214,18 @@ with col_canvas:
                     )
                 )
                 
-                st.markdown('<div class="output-frame">', unsafe_allow_html=True)
-                st.markdown(response.text)
-                st.markdown('</div>', unsafe_allow_html=True)
+                # Render the clean output frame
+                st.markdown(f'<div class="output-frame">{response.text}</div>', unsafe_allow_html=True)
                 
             except Exception as e:
                 st.error(f"System sync error: {e}")
     else:
+        # Default empty state that blends into the background nicely
         st.markdown(
-            '<div style="border: 1px dashed #1E293B; border-radius: 8px; padding: 4.5rem; text-align: center; color: #334155; font-family: \'Space Grotesk\', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">'
-            'Studio Console Idle. Awaiting Parameter Entry.'
+            '<div style="border: 1px solid #EAEAEA; border-radius: 2px; padding: 4rem; text-align: center; color: #999999; font-family: \'Inter\', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; background-color: #FFFFFF; margin-top: 1.5rem;">'
+            'Canvas is blank. Awaiting seed input.'
             '</div>', 
             unsafe_allow_html=True
         )
 
-st.markdown('<div class="studio-footer">Artisanal Content Engine // Powered by Gemini 2.5 Flash</div>', unsafe_allow_html=True)
+st.markdown('<div class="studio-footer">Designed for Upfound // Powered by Gemini</div>', unsafe_allow_html=True)
